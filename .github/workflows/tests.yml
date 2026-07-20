@@ -1,0 +1,35 @@
+name: tests
+
+on:
+  push:
+    branches: [main]
+  pull_request:
+
+jobs:
+  test:
+    runs-on: ubuntu-latest
+    timeout-minutes: 20
+    steps:
+      - uses: actions/checkout@v4
+
+      - uses: actions/setup-node@v4
+        with:
+          node-version: 22
+          cache: npm
+
+      - run: npm ci
+
+      # Chromium COMPLETO: el headless shell no carga extensiones MV3.
+      - run: npx playwright install chromium --no-shell --with-deps
+
+      - name: Suite completa
+        run: npm test
+
+      # Paridad i18n 26 idiomas: el ensamblador es idempotente — si regenerar
+      # produce diff, alguien tocó las secciones generadas a mano o rompió la
+      # paridad de claves/placeholders.
+      - name: Paridad i18n
+        run: |
+          node tools/extract-canon.mjs
+          node tools/assemble-i18n.mjs
+          git diff --exit-code -- i18n-strings.js info-strings.js tools/i18n/_canon.json

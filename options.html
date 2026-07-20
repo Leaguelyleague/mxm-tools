@@ -1,0 +1,234 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8" />
+    <title>MxM Tools — Opciones</title>
+    <link rel="stylesheet" href="options.css" />
+  </head>
+  <body>
+    <div class="header">
+      <h1 data-i18n="opt.title"></h1>
+      <select id="lang-select" class="lang-select"></select>
+    </div>
+
+    <!-- Grupo: Canción → Gem (transcriptor) -->
+    <section class="group">
+      <h2 data-i18n="opt.section.gem"></h2>
+
+      <div class="field">
+        <label for="gem_url" data-i18n="opt.gemUrl.label"></label>
+        <input type="text" id="gem_url" placeholder="https://gemini.google.com/gem/..." />
+        <div class="hint" data-i18n="opt.gemUrl.hint"></div>
+      </div>
+
+      <div class="field">
+        <label for="ui_mode" data-i18n="opt.uiMode.label"></label>
+        <select id="ui_mode">
+          <option value="overlay" data-i18n="opt.uiMode.overlay"></option>
+          <option value="off" data-i18n="opt.uiMode.off"></option>
+        </select>
+      </div>
+
+      <div class="field">
+        <label for="yt_method" data-i18n="opt.ytMethod.label"></label>
+        <select id="yt_method">
+          <option value="http" data-i18n="opt.ytMethod.http"></option>
+          <option value="browser" data-i18n="opt.ytMethod.browser"></option>
+        </select>
+        <div class="hint" data-i18n="opt.ytMethod.hint"></div>
+      </div>
+
+      <div class="row">
+        <div class="field check">
+          <input type="checkbox" id="auto_always" />
+          <label for="auto_always" data-i18n="opt.autoAlways"></label>
+        </div>
+        <div class="field">
+          <label for="auto_threshold" data-i18n="opt.autoThreshold.label"></label>
+          <input type="number" id="auto_threshold" min="0" max="100" />
+          <div class="hint" data-i18n="opt.autoThreshold.hint"></div>
+        </div>
+      </div>
+
+      <div class="row">
+        <div class="field">
+          <label for="num_candidates" data-i18n="opt.numCandidates.label"></label>
+          <input type="number" id="num_candidates" min="1" max="15" />
+        </div>
+        <div class="field">
+          <label for="message_template" data-i18n="opt.template.label"></label>
+          <input type="text" id="message_template" />
+          <div class="hint" data-i18n="opt.template.hint"></div>
+        </div>
+      </div>
+
+      <div class="field">
+        <label for="gemReviewTemplate" data-i18n="opt.reviewTemplate.label"></label>
+        <textarea id="gemReviewTemplate" rows="5"></textarea>
+        <div class="hint" data-i18n="opt.reviewTemplate.hint"></div>
+      </div>
+
+      <div class="field">
+        <label for="load_delay_ms" data-i18n="opt.delay.label"></label>
+        <input type="number" id="load_delay_ms" min="0" max="30000" step="500" />
+        <div class="hint" data-i18n="opt.delay.hint"></div>
+      </div>
+
+      <div class="field check">
+        <input type="checkbox" id="open_in_background" />
+        <label for="open_in_background" data-i18n="opt.bg.label"></label>
+      </div>
+      <div class="hint tight" data-i18n="opt.bg.hint"></div>
+
+      <div class="field">
+        <label data-i18n="opt.flashAuto.label"></label>
+        <div class="field check">
+          <input type="checkbox" id="flash_transcriptor" />
+          <label for="flash_transcriptor" data-i18n="opt.flashAuto.transcriptor"></label>
+        </div>
+        <div class="field check">
+          <input type="checkbox" id="flash_message" />
+          <label for="flash_message" data-i18n="opt.flashAuto.message"></label>
+        </div>
+        <div class="field check">
+          <input type="checkbox" id="flash_review" />
+          <label for="flash_review" data-i18n="opt.flashAuto.review"></label>
+        </div>
+        <div class="hint tight" data-i18n="opt.flashAuto.hint"></div>
+      </div>
+
+      <div class="field">
+        <label data-i18n="opt.shortcut.label"></label>
+        <div class="hint">
+          <span data-i18n="opt.shortcut.current"></span> <b id="shortcut">—</b>
+        </div>
+        <div class="hint" data-i18n="opt.shortcut.hint"></div>
+      </div>
+    </section>
+
+    <!-- Grupo: comparación / Diffgenie / mensaje al contribuyente -->
+    <section class="group">
+      <h2 data-i18n="opt.section.compare"></h2>
+
+      <div class="field">
+        <label for="messageGemUrl" data-i18n="opt.msgGemUrl.label"></label>
+        <input type="text" id="messageGemUrl" placeholder="https://gemini.google.com/gem/..." />
+        <div class="hint" data-i18n="opt.msgGemUrl.hint"></div>
+      </div>
+
+      <div class="field">
+        <label for="curatorName" data-i18n="opt.curator.label"></label>
+        <input type="text" id="curatorName" />
+      </div>
+
+      <div class="field">
+        <label for="contributorMessageTemplate" data-i18n="opt.msgTemplate.label"></label>
+        <textarea id="contributorMessageTemplate" rows="8"></textarea>
+        <div class="hint" data-i18n="opt.msgTemplate.hint"></div>
+      </div>
+
+      <div class="field">
+        <label for="diffMode" data-i18n="opt.diffMode.label"></label>
+        <select id="diffMode">
+          <option value="direct" data-i18n="opt.diffMode.direct"></option>
+          <option value="intermediate" data-i18n="opt.diffMode.intermediate"></option>
+        </select>
+      </div>
+    </section>
+
+    <!-- Grupo: animaciones y avanzadas -->
+    <section class="group">
+      <h2 data-i18n="opt.section.advanced"></h2>
+
+      <div class="field">
+        <label for="btn_animation" data-i18n="opt.anim.label"></label>
+        <select id="btn_animation">
+          <option value="none" data-i18n="opt.anim.none"></option>
+          <option value="random" data-i18n="opt.anim.random"></option>
+          <option value="drop" data-i18n="opt.anim.drop"></option>
+          <option value="matrix" data-i18n="opt.anim.matrix"></option>
+          <option value="side" data-i18n="opt.anim.side"></option>
+          <option value="spawn" data-i18n="opt.anim.spawn"></option>
+          <option value="orbit" data-i18n="opt.anim.orbit"></option>
+          <option value="portal" data-i18n="opt.anim.portal"></option>
+          <option value="grow" data-i18n="opt.anim.grow"></option>
+          <option value="rise" data-i18n="opt.anim.rise"></option>
+          <option value="balloons" data-i18n="opt.anim.balloons"></option>
+          <option value="train" data-i18n="opt.anim.train"></option>
+          <option value="meteorShower" data-i18n="opt.anim.meteorShower"></option>
+          <option value="pinballRicochet" data-i18n="opt.anim.pinballRicochet"></option>
+          <option value="frogParade" data-i18n="opt.anim.frogParade"></option>
+          <option value="ringDance" data-i18n="opt.anim.ringDance"></option>
+          <option value="geeseV" data-i18n="opt.anim.geeseV"></option>
+          <option value="vhsGlitch" data-i18n="opt.anim.vhsGlitch"></option>
+          <option value="dominoFlip" data-i18n="opt.anim.dominoFlip"></option>
+          <option value="pendulumSign" data-i18n="opt.anim.pendulumSign"></option>
+          <option value="popcorn" data-i18n="opt.anim.popcorn"></option>
+          <option value="slotReel" data-i18n="opt.anim.slotReel"></option>
+          <option value="leafFall" data-i18n="opt.anim.leafFall"></option>
+          <option value="genieWisp" data-i18n="opt.anim.genieWisp"></option>
+          <option value="clockworkWind" data-i18n="opt.anim.clockworkWind"></option>
+          <option value="cannonball" data-i18n="opt.anim.cannonball"></option>
+          <option value="discoBoogie" data-i18n="opt.anim.discoBoogie"></option>
+          <option value="bigBangWarp" data-i18n="opt.anim.bigBangWarp"></option>
+          <option value="fourCorners" data-i18n="opt.anim.fourCorners"></option>
+          <option value="magnetSnap" data-i18n="opt.anim.magnetSnap"></option>
+          <option value="polaroidDevelop" data-i18n="opt.anim.polaroidDevelop"></option>
+          <option value="stampSlam" data-i18n="opt.anim.stampSlam"></option>
+        </select>
+        <div class="hint" data-i18n="opt.anim.hint"></div>
+      </div>
+    </section>
+
+    <!-- Grupo: formularios (Typeform) -->
+    <section class="group">
+      <h2 data-i18n="opt.section.typeforms"></h2>
+      <div class="field">
+        <label for="reportName" data-i18n="opt.reportName.label"></label>
+        <input type="text" id="reportName" placeholder="Martin F" />
+        <div class="hint" data-i18n="opt.reportName.hint"></div>
+      </div>
+      <div class="field">
+        <label for="reportEmail" data-i18n="opt.reportEmail.label"></label>
+        <input type="email" id="reportEmail" placeholder="tu-email@ejemplo.com" />
+        <div class="hint" data-i18n="opt.reportEmail.hint"></div>
+      </div>
+      <div class="field">
+        <label for="slackTypeformUrl" data-i18n="opt.slackTypeform.label"></label>
+        <input type="text" id="slackTypeformUrl" placeholder="https://musixmatch.typeform.com/to/aPDyFFta" />
+        <div class="hint" data-i18n="opt.slackTypeform.hint"></div>
+      </div>
+    </section>
+
+    <!-- Grupo: guardado de letras -->
+    <section class="group">
+      <h2 data-i18n="opt.section.save"></h2>
+
+      <div class="field">
+        <label for="save_path" data-i18n="opt.savePath.label"></label>
+        <input type="text" id="save_path" placeholder="LyricsBackups" />
+        <div class="hint" data-i18n="opt.savePath.hint"></div>
+      </div>
+    </section>
+
+    <!-- Sin botón Save: todo se guarda solo al cambiar (ver options.js) -->
+    <span id="status"></span>
+
+    <!-- Grupo: backup -->
+    <section class="group">
+      <h2 data-i18n="opt.section.backup"></h2>
+      <div class="hint" data-i18n="opt.backup.hint"></div>
+      <div class="field" style="display:flex; gap:10px;">
+        <button id="export" class="secondary" data-i18n="opt.export"></button>
+        <button id="import" class="secondary" data-i18n="opt.import"></button>
+        <input type="file" id="import-file" accept="application/json" hidden />
+      </div>
+      <span id="backup-status"></span>
+    </section>
+
+    <script src="mxm-shortcuts.js"></script>
+    <script src="i18n-strings.js"></script>
+    <script src="mxm-i18n.js"></script>
+    <script src="options.js"></script>
+  </body>
+</html>

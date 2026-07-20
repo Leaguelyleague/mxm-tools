@@ -1,0 +1,13 @@
+{
+  "name": "mxm-tools",
+  "version": "2.1.2",
+  "private": true,
+  "description": "Tooling de desarrollo de la extensión (la extensión en sí es JS vanilla sin build; esto es solo para tests e i18n).",
+  "scripts": {
+    "test": "node tests/run-all.mjs",
+    "i18n:assemble": "node tools/extract-canon.mjs && node tools/assemble-i18n.mjs"
+  },
+  "devDependencies": {
+    "playwright": "1.61.1"
+  }
+}

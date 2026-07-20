@@ -1,0 +1,101 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="utf-8">
+  <link rel="stylesheet" href="popup.css">
+</head>
+<body>
+  <div class="app">
+    <div class="header">
+      <h1 data-i18n="popup.title">MxM Tools</h1>
+      <select id="lang-select" class="lang-select"></select>
+    </div>
+
+    <div class="tabs">
+      <button data-tab="functions" class="active" data-i18n="popup.tab.functions"></button>
+      <button data-tab="buttons" data-i18n="popup.tab.buttons"></button>
+      <button data-tab="highlighter" data-i18n="popup.tab.highlighter"></button>
+    </div>
+
+    <!-- TAB: Functions & shortcuts -->
+    <div class="tabpane active" id="pane-functions">
+      <div class="hint" data-i18n="popup.sc.hint"></div>
+      <div id="functions-list"></div>
+      <div class="sc-warn" id="sc-warn"></div>
+
+      <!-- Clic derecho sobre los ⋯ de las cards (lote 12) -->
+      <div class="section-title" data-i18n="popup.dots.title"></div>
+      <div class="sub-row">
+        <div class="seg" id="dots-action">
+          <button data-dots="none" data-i18n="popup.dots.none"></button>
+          <button data-dots="highlight" data-i18n="popup.dots.highlight"></button>
+          <button data-dots="gem" data-i18n="popup.dots.gem"></button>
+        </div>
+      </div>
+      <div class="hint" data-i18n="popup.dots.hint"></div>
+
+      <div class="section-title" data-i18n="popup.section.baseline"></div>
+      <div class="baseline-status" id="baseline-status" data-i18n="popup.baseline.checking"></div>
+    </div>
+
+    <!-- TAB: Floating buttons -->
+    <div class="tabpane" id="pane-buttons">
+      <div class="row">
+        <span class="row-label"><span class="name" data-i18n="popup.btn.master"></span></span>
+        <label class="switch"><input type="checkbox" id="btn-master"><span class="slider"></span></label>
+      </div>
+      <!-- Estilo fijo (lote 9): siempre cuadrado y en blanco y negro. -->
+      <div class="row">
+        <span class="row-label"><span class="name" data-i18n="popup.btn.movable"></span></span>
+        <label class="switch"><input type="checkbox" id="btn-movable"><span class="slider"></span></label>
+      </div>
+      <!-- El agrupado ahora es POR GRUPO (lote 10): cada cluster tiene su switch
+           en la cabecera dentro de la lista. -->
+      <div class="hint" data-i18n="popup.btnStyle.groupHint"></div>
+      <div id="buttons-list"></div>
+      <!-- El texto de #btn-reorder lo pone popup.js (alterna Reorder/Listo) -->
+      <button class="btn-add" id="btn-reorder"></button>
+      <button class="btn-add" id="btn-reset-pos" data-i18n="popup.btn.resetPos"></button>
+    </div>
+
+    <!-- TAB: Highlighter -->
+    <div class="tabpane" id="pane-highlighter">
+      <div class="row">
+        <span class="row-label"><span class="name" data-i18n="popup.hl.enabled"></span></span>
+        <label class="switch"><input type="checkbox" id="hl-enabled"><span class="slider"></span></label>
+      </div>
+      <div class="hint" data-i18n="popup.hl.hint"></div>
+
+      <div class="section-title" data-i18n="popup.hl.autoMark"></div>
+      <div class="row">
+        <span class="row-label"><span class="name" data-i18n="popup.hl.autoMarkOn"></span></span>
+        <label class="switch"><input type="checkbox" id="hl-automark"><span class="slider"></span></label>
+      </div>
+      <div class="sub-row" id="hl-automark-mode-row">
+        <span data-i18n="popup.hl.autoMarkMode"></span>
+        <div class="seg" id="hl-automark-mode">
+          <button data-mode="on-open" data-i18n="popup.hl.modeOpen"></button>
+          <button data-mode="on-open-not-completed" data-i18n="popup.hl.modeNotDone"></button>
+        </div>
+      </div>
+      <div class="sub-row" id="hl-automark-color-row">
+        <span data-i18n="popup.hl.autoMarkColor"></span>
+        <input type="color" id="hl-automark-color" class="hl-swatch" />
+      </div>
+      <div class="hint" data-i18n="popup.hl.autoMarkHint"></div>
+      <div id="hl-opened"></div>
+    </div>
+
+    <button class="info-btn" id="info-btn" data-i18n="popup.usefulInfo"></button>
+
+    <a id="options-link" class="options-link" data-i18n="popup.options"></a>
+  </div>
+
+  <script src="mxm-shortcuts.js"></script>
+  <script src="i18n-strings.js"></script>
+  <script src="mxm-i18n.js"></script>
+  <script src="btn-colors.js"></script>
+  <script src="btn-defs.js"></script>
+  <script src="popup.js"></script>
+</body>
+</html>

@@ -1,0 +1,76 @@
+{
+  "manifest_version": 3,
+  "name": "MxM Tools",
+  "version": "2.1.2",
+  "description": "Herramientas para curadores de Musixmatch: copiar, unir/dividir renglones, contador, Canción→Gem, comparación de letras y mensajes al contribuyente.",
+  "permissions": ["contextMenus", "storage", "activeTab", "scripting", "tabs", "clipboardWrite", "downloads", "alarms"],
+  "host_permissions": [
+    "*://*.musixmatch.com/*",
+    "*://*.youtube.com/*",
+    "https://gemini.google.com/*",
+    "https://www.diffchecker.com/*",
+    "https://musixmatch.typeform.com/*"
+  ],
+  "background": { "service_worker": "background.js", "type": "module" },
+  "action": {
+    "default_popup": "popup.html",
+    "default_icon": { "16": "icons/icon16.png", "48": "icons/icon48.png" }
+  },
+  "options_ui": { "page": "options.html", "open_in_tab": true },
+  "content_scripts": [
+    {
+      "matches": ["*://*.musixmatch.com/*", "*://musixmatch.com/*"],
+      "js": [
+        "mxm-shortcuts.js",
+        "i18n-strings-content.js",
+        "mxm-i18n.js",
+        "mxm-log.js",
+        "studio-strings.js",
+        "mxm-core.js",
+        "btn-anims.js",
+        "mxm-buttons.js",
+        "btn-colors.js",
+        "btn-defs.js",
+        "buttons-mxm.js",
+        "compare.js",
+        "save-lyrics.js",
+        "mxm_menu.js",
+        "instrumental.js",
+        "assistant.js",
+        "highlighter.js",
+        "mxm-lyrics.js",
+        "auto-continue.js",
+        "unir-lineas.js",
+        "word-counter.js",
+        "gem-shortcut.js"
+      ],
+      "run_at": "document_idle"
+    },
+    {
+      "matches": ["https://gemini.google.com/*"],
+      "js": ["mxm-shortcuts.js", "i18n-strings-content.js", "mxm-i18n.js", "mxm-log.js", "unir-lineas.js", "word-counter.js", "gem-shortcut.js", "gemini-inject.js"],
+      "run_at": "document_idle"
+    },
+    {
+      "matches": ["https://www.diffchecker.com/*"],
+      "js": ["mxm-shortcuts.js", "i18n-strings-content.js", "mxm-i18n.js", "mxm-log.js", "unir-lineas.js", "word-counter.js", "gem-shortcut.js", "diffchecker.js"],
+      "run_at": "document_idle"
+    },
+    {
+      "matches": ["https://musixmatch.typeform.com/*"],
+      "js": ["mxm-shortcuts.js", "i18n-strings-content.js", "mxm-i18n.js", "mxm-log.js", "unir-lineas.js", "word-counter.js", "gem-shortcut.js", "slack-form.js"],
+      "run_at": "document_idle"
+    }
+  ],
+  "web_accessible_resources": [
+    {
+      "resources": ["diff.html", "diff.js", "diff.css", "info.html", "info.js", "info.css"],
+      "matches": ["*://*.musixmatch.com/*"]
+    }
+  ],
+  "icons": {
+    "16": "icons/icon16.png",
+    "48": "icons/icon48.png",
+    "128": "icons/icon128.png"
+  }
+}
